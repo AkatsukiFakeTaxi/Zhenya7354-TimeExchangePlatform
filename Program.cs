@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TimeExchangePlatform.Data;
+
 namespace TimeExchangePlatform
 {
     public class Program
@@ -8,6 +11,7 @@ namespace TimeExchangePlatform
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<TEPDbContext>(c => c.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
 
             var app = builder.Build();
 
@@ -22,6 +26,7 @@ namespace TimeExchangePlatform
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();

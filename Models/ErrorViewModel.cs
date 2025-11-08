@@ -1,4 +1,4 @@
-namespace TimeExchangePlatform.Models
+﻿namespace TimeExchangePlatform.Models
 {
     public class ErrorViewModel
     {
