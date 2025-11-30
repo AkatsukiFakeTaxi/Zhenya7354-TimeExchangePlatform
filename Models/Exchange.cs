@@ -10,8 +10,8 @@
         public int OfferId { get; set; }
         public Offer Offer { get; set; } = null!;
         
-        public int ProviderUserId { get; set; }
-        public int ReceiverUserId { get; set; }
+        public string ProviderUserId { get; set; }
+        public string ReceiverUserId { get; set; }
         public User Provider { get; set; } = null!;
         public User Receiver { get; set; } = null!;
 

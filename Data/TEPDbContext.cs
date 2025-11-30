@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TimeExchangePlatform.Models;
 
 namespace TimeExchangePlatform.Data
 {
-    public class TEPDbContext(DbContextOptions<TEPDbContext> options) : DbContext(options)
+    public class TEPDbContext(DbContextOptions<TEPDbContext> options) : IdentityDbContext<User>(options)
     {
         public DbSet<User> users { get; set; }
         public DbSet<Offer> offers { get; set; }

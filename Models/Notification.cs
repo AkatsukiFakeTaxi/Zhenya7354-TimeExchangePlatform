@@ -7,7 +7,7 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsRead { get; set; } = false;
         // FK to User
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; } = null!;
     }
 }

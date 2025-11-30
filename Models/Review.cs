@@ -7,10 +7,10 @@
         public string Comment { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         // FK to User who is reviewed
-        public int ReviewedUserId { get; set; }
+        public string ReviewedUserId { get; set; }
         public User ReviewedUser { get; set; } = null!;
         // FK to User who wrote the review
-        public int ReviewerUserId { get; set; }
+        public string ReviewerUserId { get; set; }
         public User ReviewerUser { get; set; } = null!;
     }
 }

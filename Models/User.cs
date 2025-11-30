@@ -1,11 +1,11 @@
-﻿namespace TimeExchangePlatform.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace TimeExchangePlatform.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         public string? Bio { get; set; }
         public string? City { get; set; }
         public string? ProfilePictureUrl { get; set; }

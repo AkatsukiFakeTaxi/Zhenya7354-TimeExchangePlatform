@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TimeExchangePlatform.Data;
+using TimeExchangePlatform.Models;
 
 namespace TimeExchangePlatform
 {
@@ -12,6 +14,18 @@ namespace TimeExchangePlatform
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<TEPDbContext>(c => c.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+            })
+                .AddEntityFrameworkStores<TEPDbContext>().AddDefaultTokenProviders();
 
             var app = builder.Build();
 
