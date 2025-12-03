@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TimeExchangePlatform.Data;
 using TimeExchangePlatform.Models;
+using TimeExchangePlatform.Services;
 
 namespace TimeExchangePlatform
 {
@@ -26,6 +27,9 @@ namespace TimeExchangePlatform
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             })
                 .AddEntityFrameworkStores<TEPDbContext>().AddDefaultTokenProviders();
+
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddTransient<IEmailService, EmailService>();
 
             var app = builder.Build();
 

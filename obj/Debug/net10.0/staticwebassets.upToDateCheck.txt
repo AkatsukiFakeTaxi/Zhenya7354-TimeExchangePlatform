@@ -1,7 +1,5 @@
-wwwroot\css\account.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\images\accountimage.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -63,6 +61,8 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\account.css
+wwwroot\images\accountimage.jpg
 C:\Users\Zhenya\source\repos\TimeExchangePlatformSolution\TimeExchangePlatform\wwwroot\css\site.css
 C:\Users\Zhenya\source\repos\TimeExchangePlatformSolution\TimeExchangePlatform\wwwroot\favicon.ico
 C:\Users\Zhenya\source\repos\TimeExchangePlatformSolution\TimeExchangePlatform\wwwroot\js\site.js
