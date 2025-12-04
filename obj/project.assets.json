@@ -3101,23 +3101,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zhenya\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
       "projectName": "TimeExchangePlatform",
-      "projectPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
-      "packagesPath": "C:\\Users\\Zhenya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zhenya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3127,7 +3127,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/CRWgZO7Q75IJHVW7Rkq9s1VYTimaHMe9pvnfKXxOgm1Oebale8/api/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {

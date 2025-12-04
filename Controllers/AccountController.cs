@@ -128,7 +128,9 @@ namespace TimeExchangePlatform.Controllers
                 ModelState.AddModelError("", "User not found");
                 return View(model);
             }
-            var resetResult = await userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+            var decodedBytes = WebEncoders.Base64UrlDecode(model.Token);
+            var decodedToken = Encoding.UTF8.GetString(decodedBytes);
+            var resetResult = await userManager.ResetPasswordAsync(user, decodedToken, model.NewPassword);
 
             if(!resetResult.Succeeded)
             {
@@ -152,12 +154,11 @@ namespace TimeExchangePlatform.Controllers
             {
                 return RedirectToAction("VerifyEmail", "Account");
             }
-            var decodedBytes = WebEncoders.Base64UrlDecode(token);
-            var decodedToken = Encoding.UTF8.GetString(decodedBytes);
+            
             var model = new ChangePasswordViewModel
             {
                 Email = email,
-                Token = decodedToken
+                Token = token
             };
             return View(model);
         }

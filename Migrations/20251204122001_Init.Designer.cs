@@ -12,8 +12,8 @@ using TimeExchangePlatform.Data;
 namespace TimeExchangePlatform.Migrations
 {
     [DbContext(typeof(TEPDbContext))]
-    [Migration("20251130210555_Update_Model_User")]
-    partial class Update_Model_User
+    [Migration("20251204122001_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
