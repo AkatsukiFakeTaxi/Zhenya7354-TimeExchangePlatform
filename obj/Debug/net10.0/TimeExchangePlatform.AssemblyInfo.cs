@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeExchangePlatform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+376b0d3de493126965aa0a6a1ef18600f5d5ad1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2dee3d74b9851ea16ef0cf3a14cf2a0b1d66430")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeExchangePlatform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeExchangePlatform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
