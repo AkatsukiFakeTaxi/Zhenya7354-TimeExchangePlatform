@@ -1,0 +1,36 @@
+﻿@model List<Offer>
+
+    <h2>Offers</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var offer in Model)
+            {
+            <tr>
+                <td>
+                    <a asp-controller="Offer"
+                    asp-action="OfferDetails"
+                       asp-route-offerId="@offer.Id">
+                    @offer.Title
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Offer"
+                    asp-action="OfferDetails"
+                    asp-route-Id="@offer.Id">
+                    @offer.Title
+                    </a>
+                </td>
+                <td>@offer.Category</td>
+                <td>@offer.CreatedAt.ToShortDateString()</td>
+            </tr>
+        }
+        </tbody>
+    </table>

@@ -29,6 +29,7 @@ namespace TimeExchangePlatform.Data
                 .WithMany()
                 .HasForeignKey(r => r.ReviewedUserId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
         }
         }
 

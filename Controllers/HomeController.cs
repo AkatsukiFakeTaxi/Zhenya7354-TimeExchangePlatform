@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeExchangePlatform.Models;
 
@@ -18,13 +19,5 @@ namespace TimeExchangePlatform.Controllers
             return View();
         }
 
-        
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-       
-        
     }
 }
