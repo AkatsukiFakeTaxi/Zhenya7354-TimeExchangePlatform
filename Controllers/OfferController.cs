@@ -7,7 +7,7 @@ using TimeExchangePlatform.Services;
 
 namespace TimeExchangePlatform.Controllers
 {
-    [Authorize]
+    //[Authorize] - Commented for testing purposes
     public class OfferController : Controller
     {
         private readonly IOfferService _offerService;

@@ -8,3 +8,14 @@
 
 <hr />
 
+<form asp-controller="Agreement"
+asp-action="Create"
+method="post">
+
+<input type="hidden" name="offerId" value="@Model.Id" />
+<button type="submit" class="btn btn-primary">Exchange</button>
+
+</form>
+
+<a asp-action ="Index">Back to offers</a>
+

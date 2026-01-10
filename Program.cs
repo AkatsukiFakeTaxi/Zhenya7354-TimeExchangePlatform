@@ -51,7 +51,7 @@ namespace TimeExchangePlatform
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Offer}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

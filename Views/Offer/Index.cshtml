@@ -21,13 +21,6 @@
                     @offer.Title
                     </a>
                 </td>
-                <td>
-                    <a asp-controller="Offer"
-                    asp-action="OfferDetails"
-                    asp-route-Id="@offer.Id">
-                    @offer.Title
-                    </a>
-                </td>
                 <td>@offer.Category</td>
                 <td>@offer.CreatedAt.ToShortDateString()</td>
             </tr>
