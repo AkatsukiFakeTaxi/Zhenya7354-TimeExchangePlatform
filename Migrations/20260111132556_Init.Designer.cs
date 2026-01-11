@@ -12,7 +12,7 @@ using TimeExchangePlatform.Data;
 namespace TimeExchangePlatform.Migrations
 {
     [DbContext(typeof(TEPDbContext))]
-    [Migration("20251204122001_Init")]
+    [Migration("20260111132556_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -157,7 +157,7 @@ namespace TimeExchangePlatform.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TimeExchangePlatform.Models.Exchange", b =>
+            modelBuilder.Entity("TimeExchangePlatform.Models.Agreement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,7 +201,7 @@ namespace TimeExchangePlatform.Migrations
 
                     b.HasIndex("ReceiverId");
 
-                    b.ToTable("exchanges");
+                    b.ToTable("agreements");
                 });
 
             modelBuilder.Entity("TimeExchangePlatform.Models.Notification", b =>
@@ -501,7 +501,7 @@ namespace TimeExchangePlatform.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TimeExchangePlatform.Models.Exchange", b =>
+            modelBuilder.Entity("TimeExchangePlatform.Models.Agreement", b =>
                 {
                     b.HasOne("TimeExchangePlatform.Models.Offer", "Offer")
                         .WithMany()

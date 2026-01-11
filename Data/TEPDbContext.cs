@@ -8,7 +8,7 @@ namespace TimeExchangePlatform.Data
     {
         public DbSet<User> users { get; set; }
         public DbSet<Offer> offers { get; set; }
-        public DbSet<Exchange> exchanges { get; set; }
+        public DbSet<Agreement> agreements { get; set; }
         public DbSet<Review> reviews { get; set; }
         public DbSet<Notification> notifications { get; set; }
         public DbSet<Skill> skills { get; set; }
@@ -30,6 +30,18 @@ namespace TimeExchangePlatform.Data
                 .HasForeignKey(r => r.ReviewedUserId)
                 .OnDelete(DeleteBehavior.Restrict);
             
+            modelBuilder.Entity<Agreement>()
+                .HasOne(a => a.Provider)
+                .WithMany()
+                .HasForeignKey(a => a.ProviderUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Agreement>()
+                .HasOne(a => a.Receiver)
+                .WithMany()
+                .HasForeignKey(a => a.ReceiverUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
         }
 

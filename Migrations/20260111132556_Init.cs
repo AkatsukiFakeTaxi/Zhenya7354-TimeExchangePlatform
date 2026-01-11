@@ -284,7 +284,7 @@ namespace TimeExchangePlatform.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "exchanges",
+                name: "agreements",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -300,26 +300,41 @@ namespace TimeExchangePlatform.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_exchanges", x => x.Id);
+                    table.PrimaryKey("PK_agreements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_exchanges_AspNetUsers_ProviderId",
+                        name: "FK_agreements_AspNetUsers_ProviderId",
                         column: x => x.ProviderId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_exchanges_AspNetUsers_ReceiverId",
+                        name: "FK_agreements_AspNetUsers_ReceiverId",
                         column: x => x.ReceiverId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_exchanges_offers_OfferId",
+                        name: "FK_agreements_offers_OfferId",
                         column: x => x.OfferId,
                         principalTable: "offers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_agreements_OfferId",
+                table: "agreements",
+                column: "OfferId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_agreements_ProviderId",
+                table: "agreements",
+                column: "ProviderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_agreements_ReceiverId",
+                table: "agreements",
+                column: "ReceiverId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -359,21 +374,6 @@ namespace TimeExchangePlatform.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_exchanges_OfferId",
-                table: "exchanges",
-                column: "OfferId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_exchanges_ProviderId",
-                table: "exchanges",
-                column: "ProviderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_exchanges_ReceiverId",
-                table: "exchanges",
-                column: "ReceiverId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_notifications_UserId",
                 table: "notifications",
                 column: "UserId");
@@ -408,6 +408,9 @@ namespace TimeExchangePlatform.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "agreements");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -423,9 +426,6 @@ namespace TimeExchangePlatform.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "exchanges");
-
-            migrationBuilder.DropTable(
                 name: "notifications");
 
             migrationBuilder.DropTable(
@@ -438,10 +438,10 @@ namespace TimeExchangePlatform.Migrations
                 name: "skills");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "offers");
 
             migrationBuilder.DropTable(
-                name: "offers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
