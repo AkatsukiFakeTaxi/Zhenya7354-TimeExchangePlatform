@@ -6,7 +6,7 @@
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string Category { get; set; } = null!;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get;  set; } = DateTime.UtcNow;
         public bool IsActive { get; set; } = true;
         // FK to User
         public string UserId { get; set; }
