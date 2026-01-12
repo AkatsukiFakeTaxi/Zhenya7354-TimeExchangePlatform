@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TimeExchangePlatform.Data;
@@ -11,9 +12,11 @@ using TimeExchangePlatform.Data;
 namespace TimeExchangePlatform.Migrations
 {
     [DbContext(typeof(TEPDbContext))]
-    partial class TEPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260112181509_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
