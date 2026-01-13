@@ -1,0 +1,79 @@
+name: dockercompose10333488798141890745
+services:
+  db:
+    container_name: db_postgresql_container
+    environment:
+      POSTGRES_DB: TimeExchangePlatformDb
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: db_data
+        target: /var/lib/postgresql
+        volume: {}
+  timeexchangeplatform:
+    build:
+      context: C:\Users\Zhenya\source\repos\TimeExchangePlatformSolution\TimeExchangePlatform
+      dockerfile: Dockerfile
+    container_name: timeexchngeplatform
+    depends_on:
+      db:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=TimeExchangePlatformDb;Username=postgres;Password=1234
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\Zhenya\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Zhenya\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Zhenya\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Zhenya\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose10333488798141890745_default
+volumes:
+  db_data:
+    name: dockercompose10333488798141890745_db_data
