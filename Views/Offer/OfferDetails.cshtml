@@ -12,8 +12,9 @@
 asp-action="CreateAgreement"
 method="post">
 
-<input type="hidden" name="offerId" value="@Model.Id" />
-<a asp-controller="Agreement" asp-action="CreateAgreement" class="btn btn-primary">Exchange</a>
+
+<a asp-controller="Agreement" asp-action="CreateAgreement" asp-route-offerId="@Model.Id" 
+class="btn btn-primary">Exchange</a>
 
 </form>
 

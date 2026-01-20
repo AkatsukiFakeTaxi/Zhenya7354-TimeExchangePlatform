@@ -31,6 +31,7 @@ namespace TimeExchangePlatform
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddTransient<IEmailService, EmailService>();
             builder.Services.AddScoped<IOfferService,OfferService>();
+            builder.Services.AddScoped<IAgreementService,AgreementService>();
 
             var app = builder.Build();
 

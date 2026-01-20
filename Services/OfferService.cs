@@ -29,7 +29,7 @@ namespace TimeExchangePlatform.Services
 
         public async Task<List<Offer>> GetOffersAsync()
         {
-            return await _dbContext.offers.ToListAsync();
+            return await _dbContext.offers.Where(o => o.IsActive).ToListAsync();
         }
 
         public async Task<int> RemoveOffer(int offerId)

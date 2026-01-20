@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p367DHvW9R4=",
+  "dgSpecHash": "xdMYeeuFZkY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
+  "projectFilePath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zhenya\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Zhenya\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.0.nupkg.sha512",

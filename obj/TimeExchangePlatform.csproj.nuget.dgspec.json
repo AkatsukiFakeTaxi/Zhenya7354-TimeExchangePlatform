@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj": {}
+    "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj": {
+    "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
+        "projectUniqueName": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform.csproj",
         "projectName": "TimeExchangePlatform",
-        "projectPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\TimeExchangePlatform.csproj",
+        "projectPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform.csproj",
         "packagesPath": "C:\\Users\\Zhenya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\TimeExchangePlatform\\obj\\",
+        "outputPath": "C:\\Users\\Zhenya\\source\\repos\\TimeExchangePlatformSolution\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TimeExchangePlatform.Models;
 using TimeExchangePlatform.Services;
+using TimeExchangePlatform.ViewModels;
 
 namespace TimeExchangePlatform.Controllers
 {
@@ -17,18 +18,27 @@ namespace TimeExchangePlatform.Controllers
             _offerService = offerService;
         }
         [HttpGet]
-        public IActionResult CreateAgreement()
+        public IActionResult CreateAgreement(int offerId)
         {
-            return View();
+            var offer = new CreateAgreementViewModel
+            {
+                OfferId = offerId
+            };
+            return View(offer);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAgreement(int offerId, int hours)
+        public async Task<IActionResult> CreateAgreement(CreateAgreementViewModel viewModel)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
             var receiverUserId = _userManager.GetUserId(User) ?? "0";
-            var offer = await _offerService.GetOfferByIdAsync(offerId);
+            var offer = await _offerService.GetOfferByIdAsync(viewModel.OfferId);
 
-            await _agreementService.CreateAgreementAsync(offerId,hours,receiverUserId);
+            await _agreementService.CreateAgreementAsync(viewModel.OfferId, viewModel.Hours, receiverUserId);
 
+            // Make separate method to deactivate offer
             offer.IsActive = false;
             await _offerService.UpdateOffer(offer);
 
