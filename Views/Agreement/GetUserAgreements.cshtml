@@ -1,0 +1,28 @@
+﻿@model List<Agreement>
+
+<h2>Agreements</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hours</th>
+            <th>Provider:</th>
+            <th>Receiver:</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var agreement in Model)
+        {
+            <tr>
+                <td>@agreement.Hours</td>
+                <td>@agreement.Provider?.UserName</td>
+                <td>@agreement.Receiver?.UserName</td>
+                <td>@agreement.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <a asp-controller="Offer" asp-action="Index" class="btn-success">Back to offers</a>
+</div>
