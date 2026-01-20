@@ -44,5 +44,12 @@ namespace TimeExchangePlatform.Controllers
 
             return RedirectToAction("Index", "Offer");
         }
+        [HttpGet]
+        public async Task<IActionResult> GetUserAgreements()
+        {
+            var userId = _userManager.GetUserId(User) ?? "0";
+            var agreements = await _agreementService.GetUserAgreementsAsync(userId);
+            return View(agreements);
+        }
     }
 }
