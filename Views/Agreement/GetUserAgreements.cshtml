@@ -28,6 +28,16 @@
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
                 </td>
+                <td>
+                    <form asp-controller="Agreement"
+                    asp-action="CancelAgreement"
+                    asp-route-agreementId="@agreement.Id"
+                    method="post"
+                    onsubmit="return confirm('Are you want to cancel this agreement');">
+                    <button class="btn btn-sm btn-warning">Cancel</button>
+                </form>
+                </td>
+
             </tr>
         }
     </tbody>
