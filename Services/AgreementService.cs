@@ -12,15 +12,17 @@ namespace TimeExchangePlatform.Services
         public async Task ChangeStatus(ExchangeStatus status, int agreementId)
         {
             var agreement = await _dbContext.agreements.FirstOrDefaultAsync(a => a.Id == agreementId);
-            if (agreement == null) return;
+            if (agreement == null) throw new KeyNotFoundException("Agreement not found");
             agreement.Status = status;
             await _dbContext.SaveChangesAsync();
         }
 
         public async Task CreateAgreementAsync(int offerId,int hours, string receiverUserId)
         {
-            var offer = await _dbContext.offers.FirstOrDefaultAsync(o => o.Id == offerId) ?? new Offer();
-            
+            var offer = await _dbContext.offers.FirstOrDefaultAsync(o => o.Id == offerId);
+
+            // Different exception type for not found offer
+            if ( offer == null) throw new KeyNotFoundException("Offer not found");
 
             var agreement = new Agreement
             {
@@ -37,6 +39,7 @@ namespace TimeExchangePlatform.Services
         public async Task<int> DeleteAgreementAsync(int agreementId)
         {
             var agreementToDelete = await _dbContext.agreements.FirstOrDefaultAsync(a => a.Id == agreementId);
+            // Easier way to validate if agreement exists, but inconvinient for larger methods(with for instance 3 - 5 states)
             if (agreementToDelete != null)
             {
                 _dbContext.agreements.Remove(agreementToDelete);
