@@ -35,9 +35,14 @@ namespace TimeExchangePlatform.Controllers
             }
             var receiverUserId = _userManager.GetUserId(User) ?? "0";
             var offer = await _offerService.GetOfferByIdAsync(viewModel.OfferId);
-
-            await _agreementService.CreateAgreementAsync(viewModel.OfferId, viewModel.Hours, receiverUserId);
-
+            try
+            {
+                await _agreementService.CreateAgreementAsync(viewModel.OfferId, viewModel.Hours, receiverUserId);
+            }
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
             // Make separate method to deactivate offer
             offer.IsActive = false;
             await _offerService.UpdateOffer(offer);
@@ -58,9 +63,24 @@ namespace TimeExchangePlatform.Controllers
             var result = await _agreementService.DeleteAgreementAsync(agreementId);
             if(result == -1)
             {
-                return NotFound();
+                return NotFound($"Agreement with {agreementId} does not exist");
             }
             return RedirectToAction("GetUserAgreements");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CancelAgreement(int agreementId)
+        {
+            try
+            {
+                await _agreementService.ChangeStatus(ExchangeStatus.Cancelled, agreementId);
+            }
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+                return RedirectToAction("GetUserAgreements");
+            
         }
     }
 }
