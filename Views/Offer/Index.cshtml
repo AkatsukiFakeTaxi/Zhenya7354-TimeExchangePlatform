@@ -23,6 +23,16 @@
                 </td>
                 <td>@offer.Category</td>
                 <td>@offer.CreatedAt.ToShortDateString()</td>
+                <td>
+                    <form asp-controller="Offer"
+                    asp-action="DeleteOffer"
+                    asp-route-offerId="@offer.Id"
+                    method="post"
+                    onsubmit="return confirm('Are you sure you want to delete this offer?');"
+                    >
+                    <button  class=" btn btn-sm btn-danger" >Delete</button>
+                    </form>
+                </td>
             </tr>
         }
         </tbody>

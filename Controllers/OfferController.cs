@@ -56,5 +56,13 @@ namespace TimeExchangePlatform.Controllers
             await _offerService.AddOffer(offer);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteOffer(int offerId)
+        {
+            int result = await _offerService.RemoveOffer(offerId);
+            if (result == -1) return NotFound();
+            return RedirectToAction("Index", "Offer");
+        }
     }
 }
