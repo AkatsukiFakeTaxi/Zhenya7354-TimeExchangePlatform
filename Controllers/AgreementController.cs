@@ -51,5 +51,16 @@ namespace TimeExchangePlatform.Controllers
             var agreements = await _agreementService.GetUserAgreementsAsync(userId);
             return View(agreements);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAgreement(int agreementId)
+        {
+            var result = await _agreementService.DeleteAgreementAsync(agreementId);
+            if(result == -1)
+            {
+                return NotFound();
+            }
+            return RedirectToAction("GetUserAgreements");
+        }
     }
 }

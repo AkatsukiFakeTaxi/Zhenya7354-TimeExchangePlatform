@@ -19,6 +19,15 @@
                 <td>@agreement.Provider?.UserName</td>
                 <td>@agreement.Receiver?.UserName</td>
                 <td>@agreement.Status</td>
+                <td>
+                    <form asp-controller="Agreement"
+                    asp-action="DeleteAgreement"
+                    asp-route-agreementId="@agreement.Id"
+                    method="post"
+                    onsubmit="return confirm('Are you want to delete this agreement');">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+                </td>
             </tr>
         }
     </tbody>

@@ -34,6 +34,17 @@ namespace TimeExchangePlatform.Services
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<int> DeleteAgreementAsync(int agreementId)
+        {
+            var agreementToDelete = await _dbContext.agreements.FirstOrDefaultAsync(a => a.Id == agreementId);
+            if (agreementToDelete != null)
+            {
+                _dbContext.agreements.Remove(agreementToDelete);
+                return await _dbContext.SaveChangesAsync();
+            }
+            return -1;
+        }
+
         async Task<List<Agreement>> IAgreementService.GetUserAgreementsAsync(string userId)
         {
             var agreements = await _dbContext.agreements.Include(a => a.Offer).Include(a => a.Provider).Include(a => a.Receiver)
