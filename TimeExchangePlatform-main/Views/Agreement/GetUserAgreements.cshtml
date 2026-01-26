@@ -1,0 +1,86 @@
+﻿@model List<Agreement>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agreements</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <h3 class="card-title mb-4 text-center">Agreements</h3>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Hours</th>
+                            <th>Provider</th>
+                            <th>Receiver</th>
+                            <th>Status</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var agreement in Model)
+                        {
+                            <tr>
+                                <td>@agreement.Hours</td>
+                                <td>@agreement.Provider?.UserName</td>
+                                <td>@agreement.Receiver?.UserName</td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        @agreement.Status
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <form asp-controller="Agreement"
+                                              asp-action="CancelAgreement"
+                                              asp-route-agreementId="@agreement.Id"
+                                              method="post"
+                                              onsubmit="return confirm('Are you sure you want to cancel this agreement?');">
+                                            <button class="btn btn-sm btn-outline-warning">
+                                                Cancel
+                                            </button>
+                                        </form>
+
+                                        <form asp-controller="Agreement"
+                                              asp-action="DeleteAgreement"
+                                              asp-route-agreementId="@agreement.Id"
+                                              method="post"
+                                              onsubmit="return confirm('Are you sure you want to delete this agreement?');">
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-4">
+                <a asp-controller="Offer"
+                   asp-action="Index"
+                   class="btn btn-success">
+                    ← Back to offers
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
