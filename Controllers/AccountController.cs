@@ -80,7 +80,7 @@ namespace TimeExchangePlatform.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Offer");
         }
         public IActionResult VerifyEmail()
         {

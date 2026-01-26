@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TimeExchangePlatform.Models;
 using TimeExchangePlatform.Services;
@@ -6,6 +7,7 @@ using TimeExchangePlatform.ViewModels;
 
 namespace TimeExchangePlatform.Controllers
 {
+    [Authorize]
     public class AgreementController : Controller
     {
         private readonly IAgreementService _agreementService;

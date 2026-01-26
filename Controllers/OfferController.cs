@@ -33,11 +33,13 @@ namespace TimeExchangePlatform.Controllers
 
             return View(offer);
         }
+        [Authorize]
         [HttpGet]
         public IActionResult CreateOffer()
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateOffer(CreateOfferViewModel offerViewModel)
         {
@@ -56,7 +58,7 @@ namespace TimeExchangePlatform.Controllers
             await _offerService.AddOffer(offer);
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeleteOffer(int offerId)
         {
