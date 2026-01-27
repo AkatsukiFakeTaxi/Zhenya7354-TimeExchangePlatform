@@ -1,6 +1,6 @@
 ﻿@model List<Agreement>
 
-<<<<<<< HEAD
+
 <style>
     body {
         background-color: #f5f7fa;
@@ -106,50 +106,4 @@
             Back to offers
         </a>
     </div>
-=======
-<h2>Agreements</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Hours</th>
-            <th>Provider:</th>
-            <th>Receiver:</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var agreement in Model)
-        {
-            <tr>
-                <td>@agreement.Hours</td>
-                <td>@agreement.Provider?.UserName</td>
-                <td>@agreement.Receiver?.UserName</td>
-                <td>@agreement.Status</td>
-                <td>
-                    <form asp-controller="Agreement"
-                    asp-action="DeleteAgreement"
-                    asp-route-agreementId="@agreement.Id"
-                    method="post"
-                    onsubmit="return confirm('Are you want to delete this agreement');">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
-                </td>
-                <td>
-                    <form asp-controller="Agreement"
-                    asp-action="CancelAgreement"
-                    asp-route-agreementId="@agreement.Id"
-                    method="post"
-                    onsubmit="return confirm('Are you want to cancel this agreement');">
-                    <button class="btn btn-sm btn-warning">Cancel</button>
-                </form>
-                </td>
-
-            </tr>
-        }
-    </tbody>
-</table>
-<div class="text-center">
-    <a asp-controller="Offer" asp-action="Index" class="btn-success">Back to offers</a>
->>>>>>> 2d8a2b42e2b0174aae1efd50cc7d512bdd86f782
-</div>
