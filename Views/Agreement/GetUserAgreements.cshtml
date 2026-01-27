@@ -1,0 +1,108 @@
+﻿@model List<Agreement>
+
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .page-container {
+        max-width: 900px;
+        margin: 50px auto;
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    .agreements-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 25px;
+    }
+
+    .table th {
+        font-weight: 600;
+        background-color: #f1f3f5;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
+
+    .action-buttons form {
+        display: inline-block;
+    }
+
+    .btn {
+        border-radius: 8px;
+    }
+
+    .back-button {
+        margin-top: 25px;
+    }
+</style>
+
+<div class="page-container">
+    <h2 class="page-title">Agreements</h2>
+
+    <div class="agreements-card">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Provider</th>
+                    <th>Receiver</th>
+                    <th>Status</th>
+                    <th colspan="2" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var agreement in Model)
+                {
+                    <tr>
+                        <td>@agreement.Hours</td>
+                        <td>@agreement.Provider?.UserName</td>
+                        <td>@agreement.Receiver?.UserName</td>
+                        <td>@agreement.Status</td>
+
+                        <td class="text-center action-buttons">
+                            <form asp-controller="Agreement"
+                                  asp-action="DeleteAgreement"
+                                  asp-route-agreementId="@agreement.Id"
+                                  method="post"
+                                  onsubmit="return confirm('Are you sure you want to delete this agreement?');">
+                                <button class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+
+                        <td class="text-center action-buttons">
+                            <form asp-controller="Agreement"
+                                  asp-action="CancelAgreement"
+                                  asp-route-agreementId="@agreement.Id"
+                                  method="post"
+                                  onsubmit="return confirm('Are you sure you want to cancel this agreement?');">
+                                <button class="btn btn-sm btn-warning">
+                                    Cancel
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center back-button">
+        <a asp-controller="Offer"
+           asp-action="Index"
+           class="btn btn-success">
+            Back to offers
+        </a>
+    </div>
+</div>

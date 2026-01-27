@@ -1,0 +1,97 @@
+﻿@using TimeExchangePlatform.ViewModels
+@model CreateOfferViewModel
+
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .page-container {
+        max-width: 650px;
+        margin: 50px auto;
+    }
+
+    .page-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    .offer-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 10px 22px;
+    }
+
+    .form-actions {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+</style>
+
+<div class="page-container">
+    <h2 class="page-title">Create Offer</h2>
+
+    <div class="offer-card">
+        <form asp-controller="Offer"
+              asp-action="CreateOffer"
+              method="post">
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title"
+                       class="form-control"
+                       placeholder="Offer title" />
+                <span asp-validation-for="Title"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description"
+                       class="form-control"
+                       placeholder="Describe your offer" />
+                <span asp-validation-for="Description"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label"></label>
+                <input asp-for="Category"
+                       class="form-control"
+                       placeholder="Category" />
+                <span asp-validation-for="Category"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Create
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back to offers
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@model Offer
+
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .page-container {
+        max-width: 700px;
+        margin: 50px auto;
+    }
+
+    .page-title {
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .offer-details-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+    }
+
+    .detail-row {
+        margin-bottom: 12px;
+    }
+
+    .detail-label {
+        font-weight: 600;
+    }
+
+    .description-box {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 8px;
+    }
+
+    .actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 10px 22px;
+    }
+</style>
+
+<div class="page-container">
+    <h2 class="page-title">@Model.Title</h2>
+
+    <div class="offer-details-card">
+
+        <div class="detail-row">
+            <span class="detail-label">Category:</span>
+            <span>@Model.Category</span>
+        </div>
+
+        <div class="detail-row">
+            <span class="detail-label">Author:</span>
+            <span>@Model.User?.UserName</span>
+        </div>
+
+        <hr />
+
+        <div class="detail-row">
+            <span class="detail-label">Description:</span>
+            <div class="description-box">
+                @Model.Description
+            </div>
+        </div>
+
+        <div class="actions">
+            <a asp-controller="Agreement"
+               asp-action="CreateAgreement"
+               asp-route-offerId="@Model.Id"
+               class="btn btn-primary">
+                Exchange
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back to offers
+            </a>
+        </div>
+
+    </div>
+</div>
