@@ -69,6 +69,19 @@ namespace TimeExchangePlatform.Controllers
             }
             return RedirectToAction("GetUserAgreements");
         }
+        [HttpPost]
+        public async Task<IActionResult> AcceptAgreement(int agreementId)
+        {
+            try
+            {
+                await _agreementService.ChangeStatus(ExchangeStatus.Accepted, agreementId);
+            }
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            return RedirectToAction("GetUserAgreements");
+        }
 
         [HttpPost]
         public async Task<IActionResult> CancelAgreement(int agreementId)
