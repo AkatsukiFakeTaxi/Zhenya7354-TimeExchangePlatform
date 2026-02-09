@@ -6,7 +6,7 @@ namespace TimeExchangePlatform.Services
     {
         Task CreateAgreementAsync(int offerId,int hours, string receiverUserId);
         Task<List<Agreement>> GetUserAgreementsAsync(string userId);
-        Task ChangeStatus(ExchangeStatus status, int agreementId);
+        Task ChangeStatus(ExchangeStatus status, int agreementId, string currentUserId);
         Task<int> DeleteAgreementAsync(int agreementId);
     }
 }

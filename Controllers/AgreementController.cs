@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TimeExchangePlatform.Models;
 using TimeExchangePlatform.Services;
 using TimeExchangePlatform.ViewModels;
@@ -54,9 +55,18 @@ namespace TimeExchangePlatform.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserAgreements()
         {
-            var userId = _userManager.GetUserId(User) ?? "0";
+            var userId = _userManager.GetUserId(User)!;
+
+            var user = await _userManager.Users
+                .FirstAsync(u => u.Id ==userId );
             var agreements = await _agreementService.GetUserAgreementsAsync(userId);
-            return View(agreements);
+
+            var vm = new MyAgreementViewModel()
+            {
+                HoursBalanace = user.TimePoints,
+                Agreements = agreements
+            };
+            return View(vm);
         }
 
         [HttpPost]
@@ -74,11 +84,13 @@ namespace TimeExchangePlatform.Controllers
         {
             try
             {
-                await _agreementService.ChangeStatus(ExchangeStatus.Accepted, agreementId);
+                var currentUserId = _userManager.GetUserId(User);
+                if (currentUserId is null) return Unauthorized();
+                await _agreementService.ChangeStatus(ExchangeStatus.Accepted, agreementId,currentUserId);
             }
-            catch(KeyNotFoundException ex)
+            catch(Exception ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
             }
             return RedirectToAction("GetUserAgreements");
         }
@@ -88,7 +100,9 @@ namespace TimeExchangePlatform.Controllers
         {
             try
             {
-                await _agreementService.ChangeStatus(ExchangeStatus.Cancelled, agreementId);
+                var currentUserId = _userManager.GetUserId(User);
+                if (currentUserId is null) return Unauthorized();
+                await _agreementService.ChangeStatus(ExchangeStatus.Cancelled, agreementId,currentUserId);
             }
             catch(KeyNotFoundException ex)
             {

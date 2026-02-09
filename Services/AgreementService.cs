@@ -9,11 +9,22 @@ namespace TimeExchangePlatform.Services
     {
         private readonly TEPDbContext _dbContext = dbContext;
 
-        public async Task ChangeStatus(ExchangeStatus status, int agreementId)
+        public async Task ChangeStatus(ExchangeStatus status, int agreementId, string currentUserId)
         {
-            var agreement = await _dbContext.agreements.FirstOrDefaultAsync(a => a.Id == agreementId);
+            var agreement = await _dbContext.agreements.Include(a => a.Provider).Include(a => a.Receiver).FirstOrDefaultAsync(a => a.Id == agreementId);
             if (agreement == null) throw new KeyNotFoundException("Agreement not found");
+            if(agreement.ProviderUserId != currentUserId)
+                throw new UnauthorizedAccessException("Only the provider can change the agreement status");
+            if (agreement.Status != ExchangeStatus.Pending)
+                throw new InvalidOperationException("Agreement already processed");
+
             agreement.Status = status;
+
+            if(agreement.Receiver.TimePoints - agreement.Hours < 0)
+                throw new InvalidOperationException("Receiver does not have enough time points");
+            agreement.Provider.TimePoints += agreement.Hours;
+            agreement.Receiver.TimePoints -= agreement.Hours;
+
             await _dbContext.SaveChangesAsync();
         }
 
